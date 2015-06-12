@@ -35,4 +35,14 @@ describe('productsTable', function() {
 		// Verify
 		expect(ProductRow.mock.calls.length).toBe(testProducts.length);
 	});
+
+	it('should render an "empty" row if 0 products are supplied', function () {
+		// Render
+		var productsTableEl = TestUtils.renderIntoDocument(
+				<Products products={testProducts} />
+			);
+
+		// Verify
+		expect(productsTableEl.getDOMNode().getElementsByTagName('TR').length).toBe(1);
+	});
 });

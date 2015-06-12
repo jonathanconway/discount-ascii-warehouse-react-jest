@@ -26,6 +26,13 @@ var React = require('../../../node_modules/react/react'),
 					{this.props.products.map(function (product) {
 						return <ProductRow product={product} />;
 					})}
+					{this.props.products.length === 0 ?
+						<tr>
+							<td colspan="4">
+								No products found.
+							</td>
+						</tr>
+					: ''}
 				</tbody>
 			</table>;
 		}
