@@ -20,6 +20,12 @@ To run the Jasmine/Jest tests:
 
 `$ npm test`
 
+## Component Diagram
+
+As recommended by the ReactJS team, I broke the UI down into components before building it. You can see the working out of this below.
+
+<img src="https://www.dropbox.com/s/osi0hz1bcxxy6zm/2015-06-12%2021-36%20page%20%230.jpg?dl=0" />
+
 ## License
 
 Apache 2 Copyright &copy; 2015 Jonathan Conway
