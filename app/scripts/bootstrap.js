@@ -1,8 +1,8 @@
 'use strict';
 
 var React = require('../../node_modules/react/react'),
-    App = require('./components/app');
+	App = require('./components/app');
 
 React.render(
-    React.createElement(App, null),
-    document.getElementById('products'));
+	React.createElement(App, null),
+	document.getElementById('products'));

@@ -17,4 +17,3 @@ function get (params, callback) {
 }
 
 module.exports = get;
-

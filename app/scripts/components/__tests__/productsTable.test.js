@@ -17,22 +17,22 @@ describe('productsTable', function() {
 
 	it('should render as a table', function() {
 		// Render
-    	var productsTableEl = TestUtils.renderIntoDocument(
+		var productsTableEl = TestUtils.renderIntoDocument(
 			<Products products={[]} />
-    	);
+		);
 
-	    // Verify
-	    expect(productsTableEl.getDOMNode().tagName).toBe('TABLE');
+		// Verify
+		expect(productsTableEl.getDOMNode().tagName).toBe('TABLE');
 	});
 
 	it('should render as many rows as there are products supplied', function () {
 		// Render
 		var accounting = require('../../../../node_modules/accounting/accounting.js'),
-	    	productsTableEl = TestUtils.renderIntoDocument(
+			productsTableEl = TestUtils.renderIntoDocument(
 				<Products products={testProducts} />
-		    );
+			);
 
-	    // Verify
-	    expect(ProductRow.mock.calls.length).toBe(testProducts.length);
+		// Verify
+		expect(ProductRow.mock.calls.length).toBe(testProducts.length);
 	});
 });
