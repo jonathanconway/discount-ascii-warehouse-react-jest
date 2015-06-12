@@ -24,7 +24,7 @@ To run the Jasmine/Jest tests:
 
 As recommended by the ReactJS team, I broke the UI down into components before building it. You can see the working out of this below.
 
-<img src="https://www.dropbox.com/s/osi0hz1bcxxy6zm/2015-06-12%2021-36%20page%20%230.jpg?dl=0" />
+<img src="https://photos-3.dropbox.com/t/2/AAAa7DanZoB4edpICNeiDBZ5_KWHwqG8622rhK03fkCJmA/12/7047573/jpeg/1024x768/3/1434114000/0/2/2015-06-12%2021-36%20page%20%230.jpg/CJWTrgMgASACIAMgBCAFIAYgBygBKAI/RQf2WlsxHjSq8l_4wCR_Tay37BYnYtpfy9q0DHxc7u4" />
 
 ## License
 
