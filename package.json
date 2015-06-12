@@ -1,0 +1,40 @@
+{
+  "name": "discount-ascii-warehouse",
+  "version": "0.1.0",
+  "description": "A small demo app to show how to use ReactJS with Jasmine tests and Jest mocking.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "gulp"
+  },
+  "jest": {
+    "scriptPreprocessor": "gulpfile.js/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "node_modules/react"
+    ]
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "cool-ascii-faces": "~1.3.3",
+    "requirejs": "^2.1.18",
+    "express": "^4.12.4",
+    "react": "^0.13.3",
+    "accounting": "^0.4.1",
+    "zepto": "0.0.4"
+  },
+  "devDependencies": {
+    "requirejs": "^2.1.18",
+    "jasmine": "^2.3.1",
+    "path": "^0.11.14",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
+    "babel": "^5.5.6",
+    "gulp-webpack": "^1.5.0",
+    "jsx-transform": "^2.2.1",
+    "jest-cli": "^0.4.10",
+    "react-tools": "^0.13.3",
+    "gulp-develop-server": "^0.4.3",
+    "browser-sync": "^2.7.9"
+  }
+}
