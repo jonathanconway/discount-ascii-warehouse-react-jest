@@ -38,7 +38,7 @@ var React = require('../../../node_modules/react/react'),
 				</thead>
 				<tbody>
 					{this.props.products.map(function (product) {
-						return <ProductRow product={product} />;
+						return <ProductRow key={product.id} product={product} />;
 					})}
 					{this.props.products.length === 0 ?
 						<tr>

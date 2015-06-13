@@ -12,7 +12,7 @@ describe('productsTable', function() {
 		Products = require('../productsTable');
 		ProductRow = require('../productRow');
 		TestUtils = React.addons.TestUtils;
-		testProducts = [1,2,3];
+		testProducts = [{ id: 1 }, { id: 2 }, { id: 3 }];
 	});
 
 	it('should render as a table', function() {
