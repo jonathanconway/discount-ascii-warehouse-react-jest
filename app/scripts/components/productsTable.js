@@ -42,7 +42,7 @@ var React = require('../../../node_modules/react/react'),
 					})}
 					{this.props.products.length === 0 ?
 						<tr>
-							<td colspan="4">
+							<td colSpan="4">
 								No products found.
 							</td>
 						</tr>
