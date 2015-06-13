@@ -18,13 +18,20 @@ var React = require('../../../node_modules/react/react'),
 			});
 		},
 		componentDidMount: function () {
-			this.updateProducts({});
+			this.updateProducts({ limit: 20 });
 		},
 		onSort: function (sort) {
 			this.updateProducts({ sort: sort });
 		},
+		onMoreRowsNeeded: function (totalNumberOfRowsToLoad) {
+			this.updateProducts({ limit: totalNumberOfRowsToLoad });
+		},
 		render: function () {
-			return <ProductsTable products={this.products} onSort={this.onSort} sortColumn={this.state.sort} />;
+			return <ProductsTable
+						products={this.products}
+						onSort={this.onSort}
+						sortColumn={this.state.sort}
+						onMoreRowsNeeded={this.onMoreRowsNeeded} />;
 		}
 	});
 

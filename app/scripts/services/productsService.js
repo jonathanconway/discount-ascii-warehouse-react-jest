@@ -1,10 +1,9 @@
 'use strict';
 
-require('../../../node_modules/zepto/zepto.min');
+var $ = require('../../../node_modules/npm-zepto/index');
 
 function get (params, callback) {
-	// console.log('zepto', zepto);
-	Zepto.get('/api', params, function (data) {
+	$.get('/api', params, function (data) {
 		var products = data.split('\n')
 			.filter(function (line) {
 				return line;

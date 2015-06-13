@@ -21,7 +21,7 @@
     "express": "^4.12.4",
     "react": "^0.13.3",
     "accounting": "^0.4.1",
-    "zepto": "0.0.4"
+    "npm-zepto": "^1.1.7"
   },
   "devDependencies": {
     "requirejs": "^2.1.18",

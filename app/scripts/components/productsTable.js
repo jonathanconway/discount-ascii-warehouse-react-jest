@@ -3,14 +3,28 @@
 var React = require('../../../node_modules/react/react'),
 	ProductRow = require('./productRow'),
 	productsService = require('../services/productsService'),
+	$ = require('../../../node_modules/npm-zepto/index'),
 	Products = React.createClass({
 		getInitialState: function () {
 			return {
 				params: {}
 			};
 		},
+		isBusy: false,
 		onHeaderClick: function (e) {
-			this.props.onSort(e.target.innerText.toLowerCase());
+			if (this.props.onSort && !(this.isBusy)) {
+				this.isBusy = true;
+				this.props.onSort(e.target.innerText.toLowerCase());
+			}
+		},
+		onMoreRowsNeeded: function (totalNumberOfRowsToLoad) {
+			if (this.props.onMoreRowsNeeded && !(this.isBusy)) {
+				this.isBusy = true;
+				this.props.onMoreRowsNeeded(totalNumberOfRowsToLoad);
+			}
+		},
+		componentDidUpdate: function () {
+			this.isBusy = false;
 		},
 		render: function () {
 			return <table>
