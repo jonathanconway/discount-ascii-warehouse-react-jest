@@ -12,10 +12,12 @@ var React = require('../../../node_modules/react/react'),
 		products: [],
 		updateProducts: function (criteria) {
 			var that = this;
-			productsService(criteria, function (products) {
-				that.products = products;
-				that.setState(criteria);
-			});
+
+			productsService.get(criteria)
+				.then(function (products) {
+					that.products = products;
+					that.setState(criteria);
+				});
 		},
 		componentDidMount: function () {
 			this.updateProducts({ limit: 20 });

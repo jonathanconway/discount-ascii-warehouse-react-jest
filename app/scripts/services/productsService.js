@@ -1,18 +1,29 @@
 'use strict';
 
-var $ = require('../../../node_modules/npm-zepto/index');
+var $ = require('../../../node_modules/npm-zepto/index'),
+	Rsvp = require('../../../node_modules/rsvp/dist/rsvp');
 
 function get (params, callback) {
-	$.get('/api', params, function (data) {
-		var products = data.split('\n')
-			.filter(function (line) {
-				return line;
-			})
-			.map(function (line) {
-				return JSON.parse(line);
+	return new Rsvp.Promise(function(resolve, reject) {
+		$.get(
+			'/api',
+			params,
+			function (data) {
+				var products = data.split('\n')
+					.filter(function (line) {
+						return line;
+					})
+					.map(function (line) {
+						return JSON.parse(line);
+					});
+
+				resolve(products);
+			}, function (err) {
+				reject(err);
 			});
-		callback(products);
 	});
 }
 
-module.exports = get;
+module.exports = {
+	get: get 
+};
