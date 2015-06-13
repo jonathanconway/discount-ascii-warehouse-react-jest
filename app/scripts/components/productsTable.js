@@ -4,6 +4,7 @@ var React = require('../../../node_modules/react/react'),
 	ProductRow = require('./productRow'),
 	productsService = require('../services/productsService'),
 	$ = require('../../../node_modules/npm-zepto/index'),
+	utils = require('../utils'),
 	Products = React.createClass({
 		getInitialState: function () {
 			return {
@@ -11,6 +12,12 @@ var React = require('../../../node_modules/react/react'),
 			};
 		},
 		isBusy: false,
+		componentWillMount: function () {
+			var that = this;
+			window.addEventListener('scrollToBottom', function () {
+				that.onMoreRowsNeeded(that.props.products.length + 5);
+			});
+		},		
 		onHeaderClick: function (e) {
 			if (this.props.onSort && !(this.isBusy)) {
 				this.isBusy = true;
