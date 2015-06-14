@@ -1,3 +1,5 @@
+'use strict';
+
 jest.dontMock('../productRow');
 
 describe('productRow', function() {

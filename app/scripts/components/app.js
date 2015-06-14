@@ -1,38 +1,44 @@
 'use strict';
 
-var React = require('../../../node_modules/react/react'),
+var FETCH_SIZE = 20,
+
+	React = require('../../../node_modules/react/react'),
 	ProductsTable = require('./productsTable'),
 	productsService = require('../services/productsService'),
+
 	App = React.createClass({
 		getInitialState: function () {
 			return {
-				sort: ''
+				products: [],
 			};
 		},
-		products: [],
-		updateProducts: function (criteria) {
-			var that = this;
-
-			productsService.get(criteria)
-				.then(function (products) {
-					that.products = products;
-					that.setState(criteria);
-				});
+		sortBy: '',
+		limit: FETCH_SIZE,
+		getProducts: function () {
+			productsService.getProducts(
+				this.sortBy,
+				this.limit,
+				this.updateProducts);
+		},
+		updateProducts: function (products) {
+			this.setState({ products: products });
 		},
 		componentDidMount: function () {
-			this.updateProducts({ limit: 20 });
+			productsService = productsService.init({ prefetchSize: FETCH_SIZE });
+			this.getProducts();
 		},
-		onSort: function (sort) {
-			this.updateProducts({ sort: sort });
+		onSort: function (sortBy) {
+			this.sortBy = sortBy;
+			this.getProducts();
 		},
-		onMoreRowsNeeded: function (totalNumberOfRowsToLoad) {
-			this.updateProducts({ limit: totalNumberOfRowsToLoad });
+		onMoreRowsNeeded: function () {
+			this.limit += FETCH_SIZE;
+			this.getProducts();
 		},
 		render: function () {
 			return <ProductsTable
-						products={this.products}
+						products={this.state.products}
 						onSort={this.onSort}
-						sortColumn={this.state.sort}
 						onMoreRowsNeeded={this.onMoreRowsNeeded} />;
 		}
 	});
