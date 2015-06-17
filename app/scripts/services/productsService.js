@@ -21,9 +21,7 @@ function fetchProducts (sortBy, callback) {
 	productsApi.getProducts({
 		sort: sortBy,
 		skip: productsCacheLength,				// skip products we already have
-		limit: (productsCacheLength === 0)		// precache as many as we need
-				? (options.prefetchSize * 2)
-				: (productsCacheLength + (options.prefetchSize * 2))
+		limit: (options.prefetchSize * 2)		// precache as many as we need
 	}, function (products) {
 		// append new products to cache
 		var allProducts = productsCache[sortBy] = productsCache[sortBy].concat(products || []);

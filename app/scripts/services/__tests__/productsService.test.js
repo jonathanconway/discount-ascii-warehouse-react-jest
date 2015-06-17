@@ -44,7 +44,7 @@ describe('productsService', function() {
 				// Verify
 				expect(productsApi.getProducts.mock.calls.slice(-1)[0][0].sort).toBe('sort');
 				expect(productsApi.getProducts.mock.calls.slice(-1)[0][0].skip).toBe(PREFETCH_SIZE * (counter - 1));
-				expect(productsApi.getProducts.mock.calls.slice(-1)[0][0].limit).toBe(PREFETCH_SIZE * (counter + 1));
+				expect(productsApi.getProducts.mock.calls.slice(-1)[0][0].limit).toBe(PREFETCH_SIZE * 2);
 
 				if (counter < howManyTimes) {
 					callGetProducts(howManyTimes, counter + 1);
