@@ -10,7 +10,10 @@ var productsService = require('../services/productsService');
 var App = React.createClass({
 	getInitialState: function () {
 		return {
+			advertisementImage: '/ad/?r=' + Math.floor(Math.random()*1000),
+
 			products: [],
+			loading: true,
 		};
 	},
 
@@ -22,6 +25,7 @@ var App = React.createClass({
 
 	/** Retrieve products, then call updateProducts. */
 	getProducts: function () {
+		this.setState({ loading: true });
 		productsService.getProducts(
 			this.sortBy,
 			this.limit,
@@ -33,7 +37,7 @@ var App = React.createClass({
 	 * @param {array} products - Products to update to.
 	 */
 	updateProducts: function (products) {
-		this.setState({ products: products });
+		this.setState({ products: products, loading: false });
 	},
 
 	componentDidMount: function () {
@@ -58,10 +62,23 @@ var App = React.createClass({
 
 	/** @return {object} */
 	render: function () {
-		return <ProductsTable
+		return <div className={this.state.loading ? 'loading' : ''}>
+
+			<header>
+				<h1>Discount Ascii Warehouse</h1>
+
+				<p>{'Here you\'re sure to find a bargain on some of the finest ascii available to purchase. Be sure to peruse our selection of ascii faces in an exciting range of sizes and prices.'}</p>
+
+				<p>But first, a word from our sponsors:</p>
+
+				<img className="ad" src={this.state.advertisementImage} />
+			</header>
+
+			<ProductsTable
 					products={this.state.products}
 					onSort={this.onSort}
-					onMoreRowsNeeded={this.onMoreRowsNeeded} />;
+					onMoreRowsNeeded={this.onMoreRowsNeeded} />
+		</div>;
 	}
 });
 
