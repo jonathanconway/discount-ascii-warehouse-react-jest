@@ -3,13 +3,14 @@
 jest.dontMock('../app');
 
 describe('app', function() {
-	var React = require('react/addons'),
-		App = require('../app'),
-		productsService = require('../../services/productsService');
+	var React = require('react/addons');
+	var App = require('../app');
+	var TestUtils = React.addons.TestUtils;
+	var productsService = require('../../services/productsService');
 
 	it('should call productsService for data on mount', function() {
-		var getProducts = jest.genMockFunction(),
-			appEl;
+		var getProducts = jest.genMockFunction();
+		var appEl;
 
 		// Mock
 		getProducts.mockImplementation(function (a, b, c) {

@@ -3,8 +3,8 @@
 jest.dontMock('../productsApi');
 
 describe('productsApi', function() {
-	var productsApi = require('../productsApi'),
-		$ = require('../../../../node_modules/npm-zepto/index');
+	var productsApi = require('../productsApi');
+	var $ = require('../../../../node_modules/npm-zepto/index');
 
 	it('should do an ajax call to fetch products from the server, passing only appropriate parameters', function() {
 		// Run

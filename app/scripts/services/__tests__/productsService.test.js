@@ -3,6 +3,9 @@
 jest.dontMock('../productsService');
 
 describe('productsService', function() {
+	var PREFETCH_SIZE = 20;
+	var productsApi = require('../productsApi');
+	var productsService = require('../productsService').init({ prefetchSize: PREFETCH_SIZE });
 
 	function getArrayOfTwentyItems() {
 		for (var y = []; y.length < 20; y.push(y.length)) { }
@@ -10,10 +13,7 @@ describe('productsService', function() {
 	}
 
 	it('should call the api if there are no products in the cache', function() {
-		var PREFETCH_SIZE = 20,
 
-			productsApi = require('../productsApi'),
-			productsService = require('../productsService').init({ prefetchSize: PREFETCH_SIZE });
 
 		// Mock
 		productsApi.getProducts = jest.genMockFunction().mockImplementation(function(a, b) { b(); });
@@ -29,12 +29,7 @@ describe('productsService', function() {
 	});
 
 	it('should return products if there are products in the cache and call the api to prefetch more', function() {
-		var PREFETCH_SIZE = 20,
-			twentyItems = getArrayOfTwentyItems(),
-
-			productsApi = require('../productsApi'),
-			productsService = require('../productsService').init({ prefetchSize: PREFETCH_SIZE });
-
+		var twentyItems = getArrayOfTwentyItems();
 
 		// Mock
 		productsApi.getProducts =

@@ -1,10 +1,18 @@
 'use strict';
 
-var	productsCache = {},
-	options = {},
+/** {object} Dictionary of: {string} sort field => {array} cached products */
+var	productsCache = {};
 
-	productsApi = require('./productsApi');
+/** {object} Stores options that were passed to the constructor */
+var options = {};
 
+var productsApi = require('./productsApi');
+
+/**
+ * Fetches products from the API, returning the first chunk, and caching the last.
+ * @param {string} sortBy - Field to sort by. Passed to the API.
+ * @param {function} callback - Function to call when API responds. First parameter is array containing first chunk.
+ */
 function fetchProducts (sortBy, callback) {
 	// number of products currently in the cache under the specified sort criteria
 	var productsCacheLength = productsCache[sortBy].length;
@@ -26,6 +34,12 @@ function fetchProducts (sortBy, callback) {
 	});
 }
 
+/**
+ * Retrieves and returns products from the cache and/or API, depending on whether there are enough in the cache.
+ * @param {string} sortBy - Field to sort by. Used as a lookup for the cache.
+ * @param {number} limitTo - Maximum number of products to request. Will determine how many to pre-fill from the API.
+ * @param {function} callback - Function which returns products. First parameter is array containing products.
+ */
 function getProducts (sortBy, limitTo, callback) {
 	// are there enough products in the cache to service this request?
 	if (productsCache[sortBy] && productsCache[sortBy].length >= limitTo) {
@@ -47,6 +61,12 @@ function getProducts (sortBy, limitTo, callback) {
 	}
 }
 
+/**
+ * Stores options and exposes the service's methods.
+ * @constructor
+ * @param {object} initOptions - Can specify the following:
+ *   prefetchSize - How many additional products to keep cached.
+ */
 function init (initOptions) {
 	options.prefetchSize = initOptions.prefetchSize;
 

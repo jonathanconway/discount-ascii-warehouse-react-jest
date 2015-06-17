@@ -2,6 +2,11 @@
 
 var	$ = require('../../../node_modules/npm-zepto/index');
 
+/**
+ * Fetches products from the API, via an AJAX call.
+ * @param {object} params - Forwarded in the web-service call. Can contain `sort`, `limit` and/or `skip`.
+ * @param {function} callback - Function to call when response is received. First parameter contains array of products.
+ */
 function getProducts (params, callback) {
 	$.get(
 		'/api',
