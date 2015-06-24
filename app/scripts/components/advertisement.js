@@ -20,7 +20,7 @@ var Advertisement = React.createClass({
 
 	/** @return {object} */
 	render: function () {
-		return 	<img className="ad" src={this.state.imageUrl} />;
+		return <img className="ad" src={this.state.imageUrl} />;
 	}
 });
 
