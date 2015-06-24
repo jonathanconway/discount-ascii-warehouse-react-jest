@@ -6,7 +6,7 @@ var ProductRow = React.createClass({
 	/** @return {object} */
 	render: function () {
 		return <tr>
-			<td>{this.props.product.id}3</td>
+			<td>{this.props.product.id}</td>
 			<td>{this.props.product.face}</td>
 			<td style={{ fontSize: this.props.product.size }}>{this.props.product.size}</td>
 			<td>{accounting.formatMoney(this.props.product.price)}</td>

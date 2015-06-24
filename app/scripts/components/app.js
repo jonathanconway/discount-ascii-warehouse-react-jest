@@ -5,13 +5,12 @@ var FETCH_SIZE = 20;
 
 var React = require('../../../node_modules/react/react');
 var ProductsTable = require('./productsTable');
+var Advertisement = require('./advertisement');
 var productsService = require('../services/productsService');
 
 var App = React.createClass({
 	getInitialState: function () {
 		return {
-			advertisementImage: '/ad/?r=' + Math.floor(Math.random()*1000),
-
 			products: [],
 			loading: true,
 		};
@@ -71,7 +70,7 @@ var App = React.createClass({
 
 				<p>But first, a word from our sponsors:</p>
 
-				<img className="ad" src={this.state.advertisementImage} />
+				<Advertisement />
 			</header>
 
 			<ProductsTable

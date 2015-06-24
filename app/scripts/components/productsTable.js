@@ -2,6 +2,7 @@
 
 var React = require('../../../node_modules/react/react');
 var ProductRow = require('./productRow');
+var AdvertisementRow = require('./advertisementRow');
 var productsService = require('../services/productsService');
 var $ = require('../../../node_modules/npm-zepto/index');
 var utils = require('../utils');
@@ -31,6 +32,17 @@ var Products = React.createClass({
 
 	/** @return {object} */
 	render: function () {
+		var rows = [];
+		this.props.products.forEach(function (product, index) {
+			// Insert product
+			rows.push(<ProductRow key={product.id} product={product} />);
+
+			// After every 20th row, insert an Advertisement
+			if (((index + 1) % 20) === 0) {
+				rows.push(<AdvertisementRow key={index} />);
+			}
+		});
+
 		return <table>
 			<thead>
 				<tr>
@@ -41,9 +53,8 @@ var Products = React.createClass({
 				</tr>
 			</thead>
 			<tbody>
-				{this.props.products.map(function (product) {
-					return <ProductRow key={product.id} product={product} />;
-				})}
+				{rows}
+
 				{this.props.products.length === 0 ?
 					<tr>
 						<td colSpan="4">
