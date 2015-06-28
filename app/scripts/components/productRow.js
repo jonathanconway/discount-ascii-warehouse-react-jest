@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('../../../node_modules/react/react');
+
 var accounting = require('../../../node_modules/accounting/accounting.js');
+
 var ProductRow = React.createClass({
 	/** @return {object} */
 	render: function () {

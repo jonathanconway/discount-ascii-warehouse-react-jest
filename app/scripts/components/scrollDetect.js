@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('../../../node_modules/react/react');
+
 var $ = require('../../../node_modules/npm-zepto/index');
 
 /**

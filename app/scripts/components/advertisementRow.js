@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('../../../node_modules/react/react');
+
 var Advertisement = require('./advertisement');
+
 var AdvertisementRow = React.createClass({
 	/** @return {object} */
 	render: function () {

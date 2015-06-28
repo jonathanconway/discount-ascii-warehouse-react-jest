@@ -4,9 +4,11 @@
 var FETCH_SIZE = 20;
 
 var React = require('../../../node_modules/react/react');
+
 var ProductsTable = require('./productsTable');
 var Advertisement = require('./advertisement');
 var ScrollDetect = require('./scrollDetect');
+
 var productsService = require('../services/productsService');
 
 var App = React.createClass({

@@ -1,24 +1,18 @@
 'use strict';
 
 var React = require('../../../node_modules/react/react');
+
 var ProductRow = require('./productRow');
 var AdvertisementRow = require('./advertisementRow');
+
 var productsService = require('../services/productsService');
-var $ = require('../../../node_modules/npm-zepto/index');
-// var utils = require('../utils');
+
 var Products = React.createClass({
 	getInitialState: function () {
 		return {
 			params: {}
 		};
 	},
-
-	// componentWillMount: function () {
-	// 	var that = this;
-	// 	window.addEventListener('scrollToBottom', function () {
-	// 		that.onMoreRowsNeeded();
-	// 	});
-	// },
 
 	/** Event handler triggered if user clicks a column header. */
 	onHeaderClick: function (e) {

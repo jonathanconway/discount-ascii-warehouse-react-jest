@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('../../../node_modules/react/react');
+
 var randomNumberLog = [];
+
 var Advertisement = React.createClass({
 	getInitialState: function () {
 		return {
