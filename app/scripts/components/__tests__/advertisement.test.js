@@ -2,7 +2,7 @@
 
 jest.dontMock('../advertisement');
 
-describe('app', function() {
+describe('advertisementRow', function() {
 	var React = require('react/addons');
 	var Advertisement = require('../advertisement');
 	var TestUtils = React.addons.TestUtils;
