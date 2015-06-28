@@ -6,6 +6,7 @@ var FETCH_SIZE = 20;
 var React = require('../../../node_modules/react/react');
 var ProductsTable = require('./productsTable');
 var Advertisement = require('./advertisement');
+var ScrollDetect = require('./scrollDetect');
 var productsService = require('../services/productsService');
 
 var App = React.createClass({
@@ -59,6 +60,10 @@ var App = React.createClass({
 		this.getProducts();
 	},
 
+	onScrollToBottom: function () {
+		this.onMoreRowsNeeded();
+	},
+
 	/** @return {object} */
 	render: function () {
 		return <div className={this.state.loading ? 'loading' : ''}>
@@ -77,6 +82,8 @@ var App = React.createClass({
 					products={this.state.products}
 					onSort={this.onSort}
 					onMoreRowsNeeded={this.onMoreRowsNeeded} />
+
+			<ScrollDetect onScrollToBottom={this.onScrollToBottom} />
 		</div>;
 	}
 });

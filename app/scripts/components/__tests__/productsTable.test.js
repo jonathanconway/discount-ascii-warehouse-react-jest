@@ -38,17 +38,4 @@ describe('productsTable', function() {
 		// Verify
 		expect(productsTableEl.getDOMNode().getElementsByTagName('TR').length).toBe(1);
 	});
-
-	it('should request more products if window scroll to bottom event occurs', function () {
-		// Mock
-		spyOn(window, 'addEventListener');
-
-		// Render
-		var productsTableEl = TestUtils.renderIntoDocument(
-			<Products products={testProducts} />
-		);
-
-		// Verify
-		expect(window.addEventListener).toHaveBeenCalledWith('scrollToBottom', jasmine.any(Function));
-	});
 });
