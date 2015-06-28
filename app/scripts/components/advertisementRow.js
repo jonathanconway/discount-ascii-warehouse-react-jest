@@ -4,6 +4,13 @@ var React = require('../../../node_modules/react/react');
 
 var Advertisement = require('./advertisement');
 
+/**
+ * AdvertisementRow
+ *
+ * @type ReactComponent
+ * @description
+ * 	A table row representing an advertisement.
+ */
 var AdvertisementRow = React.createClass({
 	/** @return {object} */
 	render: function () {

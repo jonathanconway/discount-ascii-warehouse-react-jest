@@ -11,6 +11,13 @@ var ScrollDetect = require('./scrollDetect');
 
 var productsService = require('../services/productsService');
 
+/**
+ * App
+ *
+ * @type ReactComponent
+ * @description
+ * 	Container of the entire app.
+ */
 var App = React.createClass({
 	getInitialState: function () {
 		return {

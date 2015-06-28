@@ -7,6 +7,13 @@ var AdvertisementRow = require('./advertisementRow');
 
 var productsService = require('../services/productsService');
 
+/**
+ * Products
+ *
+ * @type ReactComponent
+ * @description
+ * 	A table of products.
+ */
 var Products = React.createClass({
 	getInitialState: function () {
 		return {

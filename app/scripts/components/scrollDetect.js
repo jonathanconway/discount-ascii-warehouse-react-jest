@@ -18,6 +18,13 @@ function createScrollToBottomEvent() {
 
 createScrollToBottomEvent();
 
+/**
+ * ScrollDetect
+ *
+ * @type ReactComponent
+ * @description
+ * 	Detects user scrolling to bottom of viewport and raises and event when this happens.
+ */
 var ScrollDetect = React.createClass({
 	componentWillMount: function () {
 		var that = this;

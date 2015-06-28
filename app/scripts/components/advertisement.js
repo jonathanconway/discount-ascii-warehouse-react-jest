@@ -4,6 +4,13 @@ var React = require('../../../node_modules/react/react');
 
 var randomNumberLog = [];
 
+/**
+ * Advertisement
+ *
+ * @type ReactComponent
+ * @description
+ * 	An advertisement, selected at random, never duplicated.
+ */
 var Advertisement = React.createClass({
 	getInitialState: function () {
 		return {

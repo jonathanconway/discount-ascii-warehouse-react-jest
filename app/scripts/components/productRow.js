@@ -4,6 +4,13 @@ var React = require('../../../node_modules/react/react');
 
 var accounting = require('../../../node_modules/accounting/accounting.js');
 
+/**
+ * ProductRow
+ *
+ * @type ReactComponent
+ * @description
+ * 	A table row representing a single product.
+ */
 var ProductRow = React.createClass({
 	/** @return {object} */
 	render: function () {
