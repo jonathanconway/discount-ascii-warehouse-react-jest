@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('../../../node_modules/react/react');
+var React = require('react');
 
 var ProductRow = require('./productRow');
 var AdvertisementRow = require('./advertisementRow');

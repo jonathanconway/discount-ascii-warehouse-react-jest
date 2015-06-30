@@ -1,6 +1,6 @@
 'use strict';
 
-var	$ = require('../../../node_modules/npm-zepto/index');
+var	$ = require('npm-zepto');
 
 /**
  * Fetches products from the API, via an AJAX call.

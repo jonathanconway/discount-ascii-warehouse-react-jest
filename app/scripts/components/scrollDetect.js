@@ -1,8 +1,8 @@
 'use strict';
 
-var React = require('../../../node_modules/react/react');
+var React = require('react');
 
-var $ = require('../../../node_modules/npm-zepto/index');
+var $ = require('npm-zepto');
 
 /**
  * Sets up a DOM event which triggers every time the user scrolls to the bottom of the viewport.

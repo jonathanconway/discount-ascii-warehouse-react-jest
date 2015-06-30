@@ -1,8 +1,8 @@
 'use strict';
 
-var React = require('../../../node_modules/react/react');
+var React = require('react');
 
-var accounting = require('../../../node_modules/accounting/accounting.js');
+var accounting = require('accounting');
 
 /**
  * ProductRow
