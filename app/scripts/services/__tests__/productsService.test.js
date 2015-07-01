@@ -13,8 +13,6 @@ describe('productsService', function() {
 	}
 
 	it('should call the api if there are no products in the cache', function() {
-
-
 		// Mock
 		productsApi.getProducts = jest.genMockFunction().mockImplementation(function(a, b) { b(); });
 
@@ -51,5 +49,18 @@ describe('productsService', function() {
 				}
 			});
 		}(3, 1));
+	});
+
+	it('should not process any requests while a request is already in progress', function() {
+		// Mock
+		productsApi.getProducts = jest.genMockFunction().mockImplementation(function(a, b) { });
+
+		// Act - Call the service twice and expect it not to process the second call
+		for (var i = 0; i < 2; i++) {
+			productsService.getProducts('' /* sortBy */, 0 /* limitTo */, function (products) { });		
+		}
+
+		// Verify
+		expect(productsApi.getProducts.mock.calls.length).toBe(1);
 	});
 });
