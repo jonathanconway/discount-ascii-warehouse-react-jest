@@ -1,5 +1,7 @@
 'use strict';
 
+var productsApi = require('./productsApi');
+
 /** {object} Dictionary of: {string} sort field => {array} cached products */
 var	productsCache = {};
 
@@ -8,9 +10,6 @@ var options = {};
 
 /** {boolean} Is a request currently being processed? */
 var processing = false;
-
-var productsApi = require('./productsApi');
-
 
 /**
  * Callback for fetchProducts. Return the first chunk, and cache the last.

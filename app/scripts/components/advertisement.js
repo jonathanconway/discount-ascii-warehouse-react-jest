@@ -2,8 +2,6 @@
 
 var React = require('react');
 
-var randomNumberLog = [];
-
 /**
  * Advertisement
  *
@@ -14,17 +12,9 @@ var randomNumberLog = [];
 var Advertisement = React.createClass({
 	getInitialState: function () {
 		return {
-			imageUrl: this.generateImageUrl()
+			/** Generate image src, including random parameter */
+			imageUrl: '/ad/?r=' + Math.floor(Math.random(new Date().getTime()) * 10000)
 		};
-	},
-
-	generateImageUrl: function () {
-		var randomNumber = Math.floor(Math.random() * 1000);
-		if (randomNumberLog.indexOf(randomNumber) > -1) {
-			return this.generateImageUrl();
-		}
-		randomNumberLog.push(randomNumber);
-		return '/ad/?r=' + randomNumber;
 	},
 
 	/** @return {object} */

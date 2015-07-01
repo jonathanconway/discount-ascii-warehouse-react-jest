@@ -1,10 +1,8 @@
 'use strict';
 
 var React = require('react');
-
 var ProductRow = require('./productRow');
 var AdvertisementRow = require('./advertisementRow');
-
 var productsService = require('../services/productsService');
 
 /**
@@ -15,6 +13,7 @@ var productsService = require('../services/productsService');
  * 	A table of products.
  */
 var Products = React.createClass({
+	/** @return {object} */
 	getInitialState: function () {
 		return {
 			params: {}
@@ -24,11 +23,6 @@ var Products = React.createClass({
 	/** Event handler triggered if user clicks a column header. */
 	onHeaderClick: function (e) {
 		this.props.onSort(e.target.innerText.toLowerCase());
-	},
-
-	/** Event handler triggered if user scrolls to bottom of window. */
-	onMoreRowsNeeded: function () {
-		this.props.onMoreRowsNeeded(this.props.products.length + 5);
 	},
 
 	/** @return {object} */

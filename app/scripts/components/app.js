@@ -1,15 +1,13 @@
 'use strict';
 
-/** @constant {number} How many products to fetch each time more are needed. */
-var FETCH_SIZE = 20;
-
 var React = require('react');
-
 var ProductsTable = require('./productsTable');
 var Advertisement = require('./advertisement');
 var ScrollDetect = require('./scrollDetect');
-
 var productsService = require('../services/productsService');
+
+/** @constant {number} How many products to fetch each time more are needed. */
+var FETCH_SIZE = 20;
 
 /**
  * App
@@ -19,8 +17,10 @@ var productsService = require('../services/productsService');
  * 	Container of the entire app.
  */
 var App = React.createClass({
+	/** @return {object} */
 	getInitialState: function () {
 		return {
+			/** Products on display. */
 			products: [],
 			
 			/** Keep track whether we're loading data. */
@@ -68,17 +68,13 @@ var App = React.createClass({
 		});
 	},
 
-	/** Event handler called within ProductTable. */
-	onMoreRowsNeeded: function () {
+	/** Event handler triggered if user scrolls to bottom of window. */
+	onScrollToBottom: function () {
 		var that = this;
 		this.setState({ limit: this.state.limit += FETCH_SIZE });
 		setTimeout(function () {
-			this.getProducts();
+			that.getProducts();
 		});
-	},
-
-	onScrollToBottom: function () {
-		this.onMoreRowsNeeded();
 	},
 
 	/** @return {object} */
@@ -97,8 +93,7 @@ var App = React.createClass({
 
 			<ProductsTable
 					products={this.state.products}
-					onSort={this.onSort}
-					onMoreRowsNeeded={this.onMoreRowsNeeded} />
+					onSort={this.onSort} />
 
 			<ScrollDetect onScrollToBottom={this.onScrollToBottom} />
 		</div>;
