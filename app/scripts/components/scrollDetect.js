@@ -1,7 +1,6 @@
 'use strict';
 
 var React = require('react');
-
 var $ = require('npm-zepto');
 
 /**

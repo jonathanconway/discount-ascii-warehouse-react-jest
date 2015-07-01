@@ -22,22 +22,24 @@ var App = React.createClass({
 	getInitialState: function () {
 		return {
 			products: [],
+			
+			/** Keep track whether we're loading data. */
 			loading: true,
+
+			/** Keep track of current filter field. */
+			sortBy: '',
+
+			/** Keep track of how many items should be displayed. */
+			limit: FETCH_SIZE
 		};
 	},
-
-	/** Keep track of current filter field. */
-	sortBy: '',
-
-	/** Keep track of how many items should be displayed. */
-	limit: FETCH_SIZE,
 
 	/** Retrieve products, then call updateProducts. */
 	getProducts: function () {
 		this.setState({ loading: true });
 		productsService.getProducts(
-			this.sortBy,
-			this.limit,
+			this.state.sortBy,
+			this.state.limit,
 			this.updateProducts);
 	},
 
@@ -59,14 +61,20 @@ var App = React.createClass({
 	 * @param {string} - Name of field to sort by.
 	 */
 	onSort: function (sortBy) {
-		this.sortBy = sortBy;
-		this.getProducts();
+		var that = this;
+		this.setState({ sortBy: sortBy });
+		setTimeout(function () {
+			that.getProducts();
+		});
 	},
 
 	/** Event handler called within ProductTable. */
 	onMoreRowsNeeded: function () {
-		this.limit += FETCH_SIZE;
-		this.getProducts();
+		var that = this;
+		this.setState({ limit: this.state.limit += FETCH_SIZE });
+		setTimeout(function () {
+			this.getProducts();
+		});
 	},
 
 	onScrollToBottom: function () {
