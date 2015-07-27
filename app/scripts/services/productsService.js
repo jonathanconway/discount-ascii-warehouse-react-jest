@@ -34,6 +34,9 @@ function fetchProducts (sortBy, callback) {
 	// number of products currently in the cache under the specified sort criteria
 	var productsCacheLength;
 
+	// worker object
+	var productsApiWorker;
+
 	// only process one request at a time.
 	if (processing) {
 		return;
@@ -42,14 +45,19 @@ function fetchProducts (sortBy, callback) {
 
 	productsCacheLength = productsCache[sortBy].length;
 
-	// call the products API, fetch only what is needed
-	productsApi.getProducts({
-		sort: sortBy,
-		skip: productsCacheLength,				// skip products we already have
-		limit: (options.prefetchSize * 2)		// precache as many as we need
-	}, function (products) {
-		fetchProductsDone(products, sortBy, callback);
+	productsApiWorker = new Worker('/scripts/services/productsApi.js');
+
+	productsApiWorker.onmessage = function(e) {
+		fetchProductsDone(e.data.products, sortBy, callback);
 		processing = false;
+    };
+
+    productsApiWorker.postMessage({
+    	params: {
+			sort: sortBy,
+			skip: productsCacheLength,				// skip products we already have
+			limit: (options.prefetchSize * 2)		// precache as many as we need
+		}
 	});
 }
 
